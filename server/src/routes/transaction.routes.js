@@ -1,0 +1,13 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { transactionCreateSchema, transactionUpdateSchema, transactionQuerySchema } from '../validators/schemas.js';
+import * as controller from '../controllers/transaction.controller.js';
+const router = Router();
+router.use(requireAuth);
+router.get('/', validate(transactionQuerySchema), controller.list);
+router.post('/', validate(transactionCreateSchema), controller.create);
+router.get('/:id', controller.get);
+router.patch('/:id', validate(transactionUpdateSchema), controller.update);
+router.delete('/:id', controller.remove);
+export default router;

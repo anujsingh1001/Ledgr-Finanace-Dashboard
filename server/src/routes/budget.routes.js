@@ -1,0 +1,12 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { budgetSchema, budgetUpdateSchema } from '../validators/schemas.js';
+import * as controller from '../controllers/budget.controller.js';
+const router = Router();
+router.use(requireAuth);
+router.get('/', controller.list);
+router.post('/', validate(budgetSchema), controller.create);
+router.patch('/:id', validate(budgetUpdateSchema), controller.update);
+router.delete('/:id', controller.remove);
+export default router;
