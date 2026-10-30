@@ -1,4 +1,11 @@
 # Ledgr — Personal Finance Dashboard
+# Ledgr — Personal Finance Dashboard
+
+🌐 **Live Demo:** https://ledgr-finance-dashboard-eight.vercel.app
+
+🔗 **Backend API:** https://ledgr-api-l0xf.onrender.com/api/health
+
+Ledgr keeps the existing React/Vite dashboard UI and adds an Express + MongoDB API for authenticated, user-owned financial records.
 
 Ledgr keeps the existing React/Vite dashboard UI and adds an Express + MongoDB API for authenticated, user-owned financial records.
 
