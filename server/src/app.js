@@ -25,7 +25,10 @@ export function createApp({ sessionStore } = {}) {
     resave: false,
     saveUninitialized: false,
     store: sessionStore || MongoStore.create({ mongoUrl: env.MONGODB_URI, collectionName: 'sessions', ttl: 60 * 60 * 24 * 7 }),
-    cookie: { httpOnly: true, sameSite: 'lax', secure: env.NODE_ENV === 'production', maxAge: 7 * 24 * 60 * 60 * 1000 },
+    cookie: {httpOnly: true,
+  sameSite: env.NODE_ENV === 'production' ? 'none' : 'lax',
+  secure: env.NODE_ENV === 'production',
+  maxAge: 7 * 24 * 60 * 60 * 1000,},
   }));
   app.get('/api/health', (req,res) => res.json({ data: { status: 'ok' } }));
   app.use('/api/auth', authRoutes);
